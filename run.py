@@ -36,7 +36,7 @@ def mark_the_box(self):
 		color_1 = (255,0,0)
 	else:
 		color_1 = (0,255,0)
-	
+
 	if(turn_count % 2 == 1):
 		arr[val] = 1
 	else:
@@ -113,6 +113,7 @@ def check(val):
 
 import pygame
 import sys
+import os
 import array 
 arr = array.array('i',[0])
 for i in range(10):
@@ -132,6 +133,7 @@ height=140
 width=140
 x_start = org_x_start - width
 y_start = org_y_start - height
+os.environ['SDL_VIDEO_WINDOW_POS'] 	= "%d,%d" %(600,250)
 gameDisplay = pygame.display.set_mode((900,600))
 pygame.display.set_caption('TIC TAC TOE')
 
@@ -144,8 +146,12 @@ for i in range(3):
 		#print(type(obj))
 		obj.draw_box()
 
+color_line = (0,0,0)
 #pygame.draw.circle(gameDisplay,color_1,(org_x_start + width,org_y_start + height),20,4)
-
+pygame.draw.line(gameDisplay,color_line,(org_x_start,org_y_start+height),(org_x_start+width*3,org_y_start+height),4)
+pygame.draw.line(gameDisplay,color_line,(org_x_start,org_y_start+2*height),(org_x_start+width*3,org_y_start+2*height),4)
+pygame.draw.line(gameDisplay,color_line,(org_x_start+width,org_y_start),(org_x_start+width,org_y_start+3*height),4)
+pygame.draw.line(gameDisplay,color_line,(org_x_start+width*2,org_y_start),(org_x_start+width*2,org_y_start+3*height),4)
 while quit:
 	#pygame.display.set_caption('TIC TAC TOE')   #########this cause infinte loop (hangs comp)
 	for event in pygame.event.get():
@@ -156,6 +162,10 @@ while quit:
 			pos = pygame.mouse.get_pos()
 			#print(type(pos))
 			result = mark_the_box(pos);
+			pygame.draw.line(gameDisplay,color_line,(org_x_start,org_y_start+height),(org_x_start+width*3,org_y_start+height),4)
+			pygame.draw.line(gameDisplay,color_line,(org_x_start,org_y_start+2*height),(org_x_start+width*3,org_y_start+2*height),4)
+			pygame.draw.line(gameDisplay,color_line,(org_x_start+width,org_y_start),(org_x_start+width,org_y_start+3*height),4)
+			pygame.draw.line(gameDisplay,color_line,(org_x_start+width*2,org_y_start),(org_x_start+width*2,org_y_start+3*height),4)
 			if result == 1:
 				quit = False
 			# for i in range(10):

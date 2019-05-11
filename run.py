@@ -33,22 +33,22 @@ def mark_the_box(self):
 	turn_count = turn_count + 1
 	
 	if(turn_count % 2 == 1):
-		text = font.render("TURN_1",True,(0,0,0),(0,0,0))
+		text = font.render("Kanish's Turn",True,(0,0,0),(0,0,0))
 		textRect = text.get_rect()
 		textRect.center= (org_x_start+ width//2,org_y_start+4*height)
 		gameDisplay.blit(text,textRect)
 
-		text = font.render("TURN_0",True,(0,255,0),(0,0,0))
+		text = font.render("Naman's Turn",True,(0,255,0),(0,0,0))
 		textRect = text.get_rect()
 		textRect.center= (org_x_start + 2*width + width//2,org_y_start+4*height)
 		gameDisplay.blit(text,textRect)
 	else:
-		text = font.render("TURN_0",True,(0,0,0),(0,0,0))
+		text = font.render("Naman's Turn",True,(0,0,0),(0,0,0))
 		textRect = text.get_rect()
 		textRect.center= (org_x_start + 2*width + width//2,org_y_start+4*height)
 		gameDisplay.blit(text,textRect)
 
-		text = font.render("TURN_1",True,(255,0,0),(0,0,0))
+		text = font.render("Kanish's Turn",True,(255,0,0),(0,0,0))
 		textRect = text.get_rect()
 		textRect.center= (org_x_start+ width//2,org_y_start+4*height)
 		gameDisplay.blit(text,textRect)
@@ -68,17 +68,22 @@ def mark_the_box(self):
 	obj.draw_box();
 	result=check(val)
 	if(result == 0):
-		text = font.render("TURN_1",True,(0,0,0),(0,0,0))
+		text = font.render("Kanish's Turn",True,(0,0,0),(0,0,0))
 		textRect = text.get_rect()
 		textRect.center= (org_x_start+ width//2,org_y_start+4*height)
 		gameDisplay.blit(text,textRect)
 
-		text = font.render("TURN_0",True,(0,0,0),(0,0,0))
+		text = font.render("Naman's Turn",True,(0,0,0),(0,0,0))
 		textRect = text.get_rect()
 		textRect.center= (org_x_start + 2*width + width//2,org_y_start+4*height)
 		gameDisplay.blit(text,textRect)
 
-		text = font.render(str(turn_count%2) + " WON",True,(24,78,208),(0,0,0))
+		if(turn_count % 2 == 1):
+			winner = "Kanish"
+		else:
+			winner = "Naman"
+
+		text = font.render(winner + " WON",True,(24,78,208),(0,0,0))
 		textRect = text.get_rect()
 		textRect.center= (org_x_start + width + width//2,org_y_start + 4*height)
 		gameDisplay.blit(text,textRect)
@@ -86,12 +91,12 @@ def mark_the_box(self):
 		return 1
 
 	elif turn_count == 9:
-		text = font.render("TURN_1",True,(0,0,0),(0,0,0))
+		text = font.render("Kanish's Turn",True,(0,0,0),(0,0,0))
 		textRect = text.get_rect()
 		textRect.center= (org_x_start+ width//2,org_y_start+4*height)
 		gameDisplay.blit(text,textRect)
 
-		text = font.render("TURN_0",True,(0,0,0),(0,0,0))
+		text = font.render("Naman's Turn",True,(0,0,0),(0,0,0))
 		textRect = text.get_rect()
 		textRect.center= (org_x_start + 2*width + width//2,org_y_start+4*height)
 		gameDisplay.blit(text,textRect)
@@ -203,7 +208,7 @@ pygame.draw.line(gameDisplay,color_line,(org_x_start,org_y_start+2*height),(org_
 pygame.draw.line(gameDisplay,color_line,(org_x_start+width,org_y_start),(org_x_start+width,org_y_start+3*height),4)
 pygame.draw.line(gameDisplay,color_line,(org_x_start+width*2,org_y_start),(org_x_start+width*2,org_y_start+3*height),4)
 
-text = font.render("TURN_1",True,(255,0,0),(0,0,0))
+text = font.render("Kanish's Turn",True,(255,0,0),(0,0,0))
 textRect = text.get_rect()
 textRect.center= (org_x_start+ width//2,org_y_start+4*height)
 gameDisplay.blit(text,textRect)
